@@ -1,0 +1,12 @@
+__langA=English
+__langB=Bulgarian
+Hello, Здравей, 1, interjection
+name, име, 3, noun
+dog, куче, 8, noun
+cat, котка, 8, noun
+table, маса, 12, noun
+person, човек, 15, noun
+time, време, 22, noun
+egg, яйце, 28, noun
+to walk, ходя, 36, verb
+to talk, говоря, 38, verb

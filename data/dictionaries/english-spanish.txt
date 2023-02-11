@@ -1,0 +1,13 @@
+__langA=English
+__langB=Spanish
+Hello, Hola, 1, interjection
+Goodbye, Adiós, interjection
+man, el hombre, 8, noun
+woman, la mujer, 10, noun
+cat, la gato, 14, noun
+dog, el perro, 18, noun
+apple, la manzana, 24, noun
+bread, el pan, 28, noun
+to speak, hablar, 34, verb
+to work, trabajar, 40, verb
+lazy, perezoso, 48, adjective
