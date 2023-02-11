@@ -1,0 +1,11 @@
+# Directory used for text file notes kept only locally. Ignore for convenience. 
+notes/*
+# Ignore Visual Studio Code's files.
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix
