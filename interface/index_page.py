@@ -14,11 +14,11 @@ class IndexPage:
         while True:
             # Print welcome message and ask user to choose login or register
             CLI.print_big("Welcome to SuperMem!")
-            CLI.print("Choose an option, or type \"exit\":\n")
-            CLI.print("1. Login\n")
-            CLI.print("2. Register\n")
-            # User chooses an option
-            option = CLI.ask_option([1, 2])
+            option = CLI.ask_option_num(
+                "Choose an option, or type \"exit\":", [
+                "Login",
+                "Register"
+            ])
             # If option is None we need to exit
             if option is None:
                 return
@@ -26,7 +26,7 @@ class IndexPage:
             elif option == 1:
                 user = LoginPage.run(users)
                 home_page = HomePage(user)
-                home_page.run()
+                home_page.run(languages)
                 # After exiting the home page user is back to the index page
             else:
                 # Register a user and add it to the list of users

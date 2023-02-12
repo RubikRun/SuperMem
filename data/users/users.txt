@@ -1,2 +1,3 @@
 borisd, $2b$12$Jb0isnsesxQjx0/8tVrdOOrR51L6g8ff/Lkk2kd4ZrZBOgHPsfiXy, Bulgarian
 gosho, $2b$12$EVfkc..W.xqJ3bRwBON0S.d4YQqR.xEJfG7BaRlkYCL8bzNCFHd1y, English
+rubikrun, $2b$12$GF/VKDEsPfHEOAPhhXgVsehMxEunoA5PZo.2i166OzPb.yMIKcpBG, Spanish
