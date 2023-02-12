@@ -31,7 +31,7 @@ class HomePage:
             elif option == 2:
                 self.show_active_languages()
             elif option == 3:
-                self.learn_new_word()
+                self.learn_new_word(database)
             elif option == 4:
                 self.do_word_test()
 
@@ -49,6 +49,8 @@ class HomePage:
         self.user.active_words.append(0)
         # Setup user's dictionaries again to handle the new language
         database.setup_user_dictionaries(self.user)
+        # Setup user's confidences again to handle the new language
+        database.setup_user_confidences(self.user)
         CLI.print("Okay. {} added to your active languages.\n".format(language))
 
     # Returns a list with languages that the user can learn and that have a dictionary with the user's main language.
@@ -84,7 +86,7 @@ class HomePage:
     # Lets user learn a new word in one of their active languages.
     # The new word is the next word after user's active words in the chosen language.
     # After showing the word to the user, user's active words are increased by one for the chosen language
-    def learn_new_word(self) -> None:
+    def learn_new_word(self, database: Database) -> None:
         # Choose a language
         language_idx = self.choose_active_language()
         if language_idx is None:
@@ -95,6 +97,8 @@ class HomePage:
         word = self.user.dictionaries[language_idx].words[self.user.active_words[language_idx]]
         # Increase the count of active words for the chosen language
         self.user.active_words[language_idx] += 1
+        # Setup user's confidences again to handle the change of active words
+        database.setup_user_confidences(self.user)
         # Show the new word to the user
         CLI.print("Okay, here's a new word in {}:\n".format(language))
         CLI.print_clearly("{} <-----means-----> {}".format(word.term_a, word.term_b))

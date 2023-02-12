@@ -43,6 +43,8 @@ class Database:
                 continue
             # Set up user's dictionaries.
             self.setup_user_dictionaries(user)
+            # Set up user's confidences
+            self.setup_user_confidences(user)
             # Add the user to the list
             self.users.append(user)
         file.close()
@@ -153,6 +155,30 @@ class Database:
                 Logger.log_error(("A dictionary cannot be found between user's main language ({})"\
                     + " and one of their active languages ({}).").format(user.main_language, language))
                 user.dictionaries.append(None)
+
+    # Setup user's confidences.
+    # If there are missing confidence values, this function will create them and initialize to 0.
+    # If there are more than needed, it will cut the remaining part.
+    def setup_user_confidences(self, user: User) -> None:
+        languages_count = len(user.active_languages)
+        # If there are no confidences, create all of them, fill with 0s
+        if not user.confidences:
+            user.confidences = []
+            for lang_idx in range(languages_count):
+                user.confidences.append([0] * user.active_words[lang_idx])
+            return
+        # If for some of the languages that have confidences, the confidences are fewer than the active words, fill up with 0s
+        for lang_idx in range(len(user.confidences)):
+            if len(user.confidences[lang_idx]) < user.active_words[lang_idx]:
+                user.confidences[lang_idx] += [0] * (user.active_words[lang_idx] - len(user.confidences[lang_idx]))
+            elif len(user.confidences[lang_idx]) > user.active_words[lang_idx]:
+                user.confidences[lang_idx] = user.confidences[lang_idx][:user.active_words[lang_idx]]
+        # If some languages don't have confidences, create and fill with 0s
+        if len(user.confidences) < languages_count:
+            for lang_idx in range(len(user.confidences), languages_count):
+                user.confidences.append([0] * user.active_words[lang_idx])
+        elif len(user.confidences) > languages_count:
+            user.confidences = user.confidences[:languages_count]
 
 ########## Word ##########
 
