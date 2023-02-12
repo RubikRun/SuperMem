@@ -12,16 +12,20 @@ class IndexPage:
     # Expects a list of registered users, as a parameter.
     def run(users: List[User]) -> None:
         while True:
+            # Print welcome message and ask user to choose login or register
             CLI.print_big("Welcome to SuperMem!")
             CLI.print("Choose an option, or type \"exit\":\n")
             CLI.print("1. Login\n")
             CLI.print("2. Register\n")
-
+            # User chooses an option
             option = CLI.ask_option([1, 2])
-
+            # Redirect to login or register page based on the chosen option
             if option == 1:
                 user = LoginPage.run(users)
+                # TODO: redirect to home page
             else:
+                # Register a user and add it to the list of users
                 user = RegisterPage.run()
                 users.append(user)
+                # After registration user is back to the index page so that they can login
                 
