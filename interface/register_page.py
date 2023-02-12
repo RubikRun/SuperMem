@@ -1,4 +1,5 @@
 from interface.cli import CLI
+from user import User
 import bcrypt
 
 MIN_USERNAME_LEN = 3
@@ -8,11 +9,14 @@ PASSWORD_ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01
 
 # A class for a CLI page for user registration
 class RegisterPage:
-    def __init__():
-        ...
-
-    def run():
-        ...
+    # Runs the user registration page. Returns the registrated user.
+    def run() -> User:
+        # Ask for username and password
+        username = RegisterPage.ask_username()
+        password = RegisterPage.ask_password()
+        # Create the user and return it
+        user = User(username, password)
+        return user
 
     # Checks if a user input is valid with some minimum length and allowed characters
     def is_input_valid(input: str, min_len: int, allowed_chars: str) -> bool:
