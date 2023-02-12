@@ -53,4 +53,6 @@ class CLI:
     # Asks for a CLI option. Returns the chosen option.
     def ask_option(msg: str, options: list[str]) -> str:
         num = CLI.ask_option_num(msg, options)
+        if num is None:
+            return None
         return options[num - 1]

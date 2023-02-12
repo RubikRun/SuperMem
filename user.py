@@ -10,7 +10,7 @@ class User:
         self.username = username
         self.password = password
         self.main_language = main_language
-        self.languages_learning = []
+        self.active_languages = []
 
     # Checks if a username is valid
     def is_username_valid(username: str) -> bool:

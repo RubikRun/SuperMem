@@ -13,6 +13,7 @@ class RegisterPage:
         main_language = CLI.ask_option("What's your main language?", languages)
         # Create the user and return it
         user = User(username, password, main_language)
+        CLI.print("User {} created successfully.".format(username))
         return user
 
     # Asks user to choose a username, until they choose a valid one. Returns the username.
