@@ -1,7 +1,7 @@
-__langA=English
-__langB=Spanish
+__language_a=English
+__language_b=Spanish
 Hello, Hola, 1, interjection
-Goodbye, Adiós, interjection
+Goodbye, Adiós, 4, interjection
 man, el hombre, 8, noun
 woman, la mujer, 10, noun
 cat, la gato, 14, noun

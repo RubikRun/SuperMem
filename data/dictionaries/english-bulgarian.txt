@@ -1,5 +1,5 @@
-__langA=English
-__langB=Bulgarian
+__language_a=English
+__language_b=Bulgarian
 Hello, Здравей, 1, interjection
 name, име, 3, noun
 dog, куче, 8, noun
