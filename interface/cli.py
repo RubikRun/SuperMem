@@ -21,7 +21,7 @@ class CLI:
     # Returns the answer.
     def ask_for(msg: str) -> str:
         CLI.print(msg)
-        answer = input()
+        answer = input().strip()
         return answer
 
     # Asks user for their password by printing some message and waiting for their answer.

@@ -1,6 +1,7 @@
 from interface.cli import CLI
 from user import User
 from data.database import Database
+from dictionary import Dictionary
 
 # A class for a home page of a user
 # Each user has their own home page with their languages and words
@@ -19,7 +20,8 @@ class HomePage:
                 "Choose an option, or type \"exit\":", [
                 "Start learning a new language",
                 "What languages am I learning?",
-                "Learn a new word"
+                "Learn a new word",
+                "Do a word test"
             ])
             # If option is None we need to exit
             if option is None:
@@ -30,6 +32,8 @@ class HomePage:
                 self.show_active_languages()
             elif option == 3:
                 self.learn_new_word()
+            elif option == 4:
+                self.do_word_test()
 
     # Asks a user what language they want to start learning, gives them a list of only the languages that are available for them.
     # Adds the chosen language to the user's active languages
@@ -106,3 +110,51 @@ class HomePage:
         # Ask for an active language
         language_num = CLI.ask_option_num("Choose one of the languages that you're learning.", self.user.active_languages)
         return language_num - 1
+
+    def do_word_test(self) -> None:
+        # Choose a language
+        language_idx = self.choose_active_language()
+        if language_idx is None:
+            CLI.print("You have no active languages. Start learning a language first.\n")
+            return
+        language = self.user.active_languages[language_idx]
+        # Get the number of words that user knows in this language
+        words_count = self.user.active_words[language_idx]
+        if words_count < 1:
+            CLI.print("You don't know any words in this language. Learn some words first.\n")
+            return
+        # Get the dictionary between that language and user's main language
+        dictionary = self.user.dictionaries[language_idx]
+        # Check the direction of the dictionary, whether it's from known to unknown or the other way
+        dict_from_kn = False
+        if dictionary.language_a == self.user.main_language:
+            dict_from_kn = True
+        # Choose the direction of the test, whether to be from known to unknown or vice versa
+        from_kn = CLI.ask_option_num(
+            "Choose direction of the test:", [
+            "Questions in {}, answers in {}".format(language, self.user.main_language),
+            "Questions in {}, answers in {}".format(self.user.main_language, language)
+        ]) == 2
+        # Check whether dictionary languages should be swapped
+        should_swap_dict = (from_kn != dict_from_kn)
+        # Traverse the words that user knows
+        for word in dictionary.words[:words_count]:
+            # Retrieve the term that will be asked and the term that should be answered, based on the direction of the test
+            asked_term = word.term_a
+            real_answer = word.term_b
+            if should_swap_dict:
+                asked_term = word.term_b
+                real_answer = word.term_a
+            # Determine the question, based on the direction of the test
+            question = "How do you say \"{}\" in {}?\n".format(asked_term, language)
+            if from_kn == 0:
+                question = "What's \"{}\" in {}?\n".format(asked_term, self.user.main_language)
+            # Ask the question
+            CLI.print(question)
+            # Get user's answer
+            answer = CLI.ask_for("Answer: ")
+            # Check if it matches the real answer
+            if answer == real_answer:
+                CLI.print("Correct!\n")
+            else:
+                CLI.print("No. It's {}\n".format(real_answer))
