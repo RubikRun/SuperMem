@@ -16,6 +16,7 @@ class User:
         main_language: str,
         active_languages: list[str],
         active_words: list[int],
+        confidences: list[list[int]],
         dictionaries: list[Dictionary]
     ):
         self.username = username
@@ -23,6 +24,7 @@ class User:
         self.main_language = main_language
         self.active_languages = active_languages
         self.active_words = active_words
+        self.confidences = confidences
         self.dictionaries = dictionaries
 
     # Checks if a username is valid

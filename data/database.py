@@ -63,12 +63,31 @@ class Database:
             active_words_serialized = Database.EMPTY_LIST_CHAR
         for word in user.active_words[1:]:
             active_words_serialized += Database.ELEMENTS_SEPARATOR + str(word)
+        # Serialize confidences by connecting them with elements separators
+        if user.confidences:
+            if user.confidences[0]:
+                confidences_serialized = str(user.confidences[0][0])
+                for confidence in user.confidences[0][1:]:
+                    confidences_serialized += Database.NESTED_ELEMENTS_SEPARATOR + str(confidence)
+            else:
+                confidences_serialized = Database.NESTED_EMPTY_LIST_CHAR
+        else:
+            confidences_serialized = Database.EMPTY_LIST_CHAR
+        for lang_confidences in user.confidences[1:]:
+            confidences_serialized += Database.ELEMENTS_SEPARATOR
+            if lang_confidences:
+                confidences_serialized += str(lang_confidences[0])
+            else:
+                confidences_serialized += Database.NESTED_EMPTY_LIST_CHAR
+            for confidence in lang_confidences[1:]:
+                confidences_serialized += Database.NESTED_ELEMENTS_SEPARATOR + str(confidence)
         # Serialize the user
         serialized = user.username + Database.PROPERTY_SEPARATOR\
             + user.password.decode() + Database.PROPERTY_SEPARATOR\
             + user.main_language + Database.PROPERTY_SEPARATOR\
             + active_languages_serialized + Database.PROPERTY_SEPARATOR\
-            + active_words_serialized
+            + active_words_serialized + Database.PROPERTY_SEPARATOR\
+            + confidences_serialized
         return serialized
 
     # Deserializes a user from a string. The string should be a serialized user.
@@ -77,9 +96,9 @@ class Database:
     #       They need to be set up separately.
     def deserialize_user(serialized: str) -> User:
         parts = serialized.split(Database.PROPERTY_SEPARATOR)
-        # Users have exactly 5 properties
-        if len(parts) != 5:
-            Logger.log_error("Serialized user is invalid. Must have exactly 5 properties.")
+        # Users have exactly 6 properties
+        if len(parts) != 6:
+            Logger.log_error("Serialized user is invalid. Must have exactly 6 properties.")
             return None
         # Extract the properties from the string parts
         username = parts[0]
@@ -95,8 +114,19 @@ class Database:
             active_words = []
         else:
             active_words = [int(words_count) for words_count in parts[4].split(Database.ELEMENTS_SEPARATOR)]
+        # Handle confidences
+        confidences = []
+        if parts[5] != Database.EMPTY_LIST_CHAR:
+            for lang_confidence_str in parts[5].split(Database.ELEMENTS_SEPARATOR):
+                if lang_confidence_str == Database.NESTED_EMPTY_LIST_CHAR:
+                    confidences.append([])
+                    continue
+                lang_confidences = []
+                for confidence_str in lang_confidence_str.split(Database.NESTED_ELEMENTS_SEPARATOR):
+                    lang_confidences.append(int(confidence_str))
+                confidences.append(lang_confidences)
         # Create a user and return it
-        user = User(username, password, main_language, active_languages, active_words, [])
+        user = User(username, password, main_language, active_languages, active_words, confidences, [])
         return user
 
     # Finds the dictionaries that user needs for his active languages.
@@ -257,6 +287,7 @@ class Database:
     PROPERTY_SEPARATOR = ", "
     # String used to separate elements of properties with multi elements
     ELEMENTS_SEPARATOR = " & "
+    NESTED_ELEMENTS_SEPARATOR = "-"
     # Prefixes of lines in a dictionary file that specify the two languages of the dictionary
     LANGUAGE_A_PREFIX = "__language_a="
     LANGUAGE_B_PREFIX = "__language_b="
@@ -264,3 +295,4 @@ class Database:
     DEFAULT_DICT_DIRECTORY = "data/dictionaries/"
     # A character representing an empty list in a serialized object
     EMPTY_LIST_CHAR = "_"
+    NESTED_EMPTY_LIST_CHAR = "."
