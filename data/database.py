@@ -41,6 +41,9 @@ class Database:
             if user is None:
                 Logger.log_error("Invalid user on line {} of file {} will be skipped.".format(line_idx + 1, filepath))
                 continue
+            # Set up user's dictionaries.
+            self.setup_user_dictionaries(user)
+            # Add the user to the list
             self.users.append(user)
         file.close()
 
@@ -62,6 +65,8 @@ class Database:
 
     # Deserializes a user from a string. The string should be a serialized user.
     # Returns a User object with the properties from the string.
+    # NOTE: User's dictionaries are not set up here, because they relate to other parts of the database.
+    #       They need to be set up separately.
     def deserialize_user(serialized: str) -> User:
         parts = serialized.split(Database.PROPERTY_SEPARATOR)
         # Users have exactly 4 properties
@@ -77,8 +82,33 @@ class Database:
         else:
             active_languages = [lang.strip() for lang in parts[3].split(Database.ELEMENTS_SEPARATOR)]
         # Create a user and return it
-        user = User(username, password, main_language, active_languages)
+        user = User(username, password, main_language, active_languages, [])
         return user
+
+    # Finds the dictionaries that user needs for his active languages.
+    # For each active language, a dictionary is found between it and the user's main language.
+    # User's dictionaries are updated with the found dictionaries
+    def setup_user_dictionaries(self, user: User) -> None:
+        user.dictionaries = []
+        # Traverse active languages, looking for a dictionary for each one
+        for language in user.active_languages:
+            dict_found = False
+            for dictionary in self.dictionaries:
+                # We are looking for a dictionary with one of its languages being user's main language
+                # and the other being the current active language in the traversal. They can be either (A,B) or (B,A)
+                if (dictionary.language_a == user.main_language and dictionary.language_b == language)\
+                or (dictionary.language_a == language and dictionary.language_b == user.main_language):
+                    user.dictionaries.append(dictionary)
+                    dict_found = True
+                    break
+            # If a dictionary is not found for this active language, this is a problem.
+            # Should not happen because if there is no such dictionary then the option of this active language
+            # should not have been allowed for the user.
+            # If it happens for some reason, log error and append None so that the index matching is kept for the rest of the languages
+            if not dict_found:
+                Logger.log_error(("A dictionary cannot be found between user's main language ({})"\
+                    + " and one of their active languages ({}).").format(user.main_language, language))
+                user.dictionaries.append(None)
 
 ########## Word ##########
 

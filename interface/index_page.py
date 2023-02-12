@@ -3,6 +3,7 @@ from interface.login_page import LoginPage
 from interface.register_page import RegisterPage
 from interface.home_page import HomePage
 from user import User
+from data.database import Database
 
 # A class for a CLI index page.
 # It's the first thing that opens when you start the application.
@@ -10,7 +11,7 @@ from user import User
 class IndexPage:
     # Runs the index page.
     # Expects a list of registered users, as a parameter.
-    def run(users: list[User], languages: list[str]) -> None:
+    def run(users: list[User], database: Database) -> None:
         while True:
             # Print welcome message and ask user to choose login or register
             CLI.print_big("Welcome to SuperMem!")
@@ -26,11 +27,11 @@ class IndexPage:
             elif option == 1:
                 user = LoginPage.run(users)
                 home_page = HomePage(user)
-                home_page.run(languages)
+                home_page.run(database)
                 # After exiting the home page user is back to the index page
             else:
                 # Register a user and add it to the list of users
-                user = RegisterPage.run(languages)
+                user = RegisterPage.run(database.get_all_languages())
                 users.append(user)
                 # After registration user is back to the index page so that they can login
                 

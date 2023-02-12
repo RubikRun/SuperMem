@@ -1,3 +1,5 @@
+from dictionary import Dictionary
+
 MIN_USERNAME_LEN = 3
 MIN_PASSWORD_LEN = 6
 USERNAME_ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -6,11 +8,19 @@ PASSWORD_ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01
 # A class for a user of the application
 class User:
     # Creates a user with a username, password, their main language and their active languages
-    def __init__(self, username: str, password: bytes, main_language: str, active_languages: list[str] = []):
+    def __init__(
+        self,
+        username: str,
+        password: bytes,
+        main_language: str,
+        active_languages: list[str],
+        dictionaries: list[Dictionary]
+    ):
         self.username = username
         self.password = password
         self.main_language = main_language
         self.active_languages = active_languages
+        self.dictionaries = dictionaries
 
     # Checks if a username is valid
     def is_username_valid(username: str) -> bool:
