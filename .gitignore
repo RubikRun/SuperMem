@@ -9,3 +9,4 @@ notes/*
 !.vscode/*.code-snippets
 .history/
 *.vsix
+*__pycache__*
