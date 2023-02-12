@@ -2,6 +2,7 @@ from user import User
 from logger import Logger
 from word import Word
 from dictionary import Dictionary
+import os
 
 # A class for the database of the application.
 # It keeps track of all the data and reads/writes it to text files.
@@ -9,11 +10,13 @@ class Database:
     # Creates an empty database
     def __init__(self):
         self.users = []
+        self.dictionaries = []
+        self.dict_filepaths = []
 
 ########## User IO ##########
 
-    # Writes users to a file
-    def write_users(self, filepath: str) -> None:
+    # Exports users to a file
+    def export_users(self, filepath: str) -> None:
         file = open(filepath, 'w')
         # Write all the users
         for user in self.users:
@@ -23,8 +26,8 @@ class Database:
             file.write(serialized + "\n")
         file.close()
 
-    # Reads users from a file
-    def read_users(self, filepath: str) -> None:
+    # Loads users from a file
+    def load_users(self, filepath: str) -> None:
         self.users = []
         try:
             file = open(filepath, 'r')
@@ -147,8 +150,43 @@ class Database:
         dictionary = Dictionary(language_a, language_b, words)
         return dictionary
 
+    # Exports all the dictionaries in the database to their files
+    def export_dictionaries(self):
+        if len(self.dictionaries) != len(self.dictionaries):
+            Logger.log_error("Different number of dictionaries and filepaths to them.")
+            return
+        for idx, dictionary in enumerate(self.dictionaries):
+            filepath = self.dict_filepaths[idx]
+            Database.write_dictionary(dictionary, filepath)
+
+    # Loads dictionaries to the database from text files.
+    # If filepaths are not provided, the files from the default dictionary directory will be used
+    def load_dictionaries(self, filepaths: list[str] = []):
+        if not filepaths:
+            filepaths = Database.get_dict_filepaths_from_default_directory()
+        self.dictionaries = []
+        self.dict_filepaths = filepaths
+        # Traverse filepaths
+        for filepath in filepaths:
+            # Read the dictionary from each file
+            dictionary = Database.read_dictionary(filepath)
+            # Add it to the database's dictionaries
+            self.dictionaries.append(dictionary)
+
+    # Returns a list of paths to the dictionary files in the default dictionary directory
+    def get_dict_filepaths_from_default_directory() -> list[str]:
+        all_files = os.listdir(Database.DEFAULT_DICT_DIRECTORY)
+        txt_files = []
+        for file in all_files:
+            if file.endswith(".txt"):
+                filepath = Database.DEFAULT_DICT_DIRECTORY + file
+                txt_files.append(filepath)
+        return txt_files
+
     # String used to separate properties of an object when serializing it
     PROPERTY_SEPARATOR = ", "
     # Prefixes of lines in a dictionary file that specify the two languages of the dictionary
     LANGUAGE_A_PREFIX = "__language_a="
     LANGUAGE_B_PREFIX = "__language_b="
+    # Default directory for dictionary files
+    DEFAULT_DICT_DIRECTORY = "data/dictionaries/"

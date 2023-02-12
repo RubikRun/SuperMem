@@ -4,8 +4,10 @@ from data.database import Database
 USERS_DATA_FILE = "data/users/users.txt"
 
 database = Database()
-database.read_users(USERS_DATA_FILE)
+database.load_users(USERS_DATA_FILE)
+database.load_dictionaries()
 
 IndexPage.run(database.users)
 
-database.write_users(USERS_DATA_FILE)
+database.export_users(USERS_DATA_FILE)
+database.export_dictionaries()

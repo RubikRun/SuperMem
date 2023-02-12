@@ -1,13 +1,12 @@
 from interface.cli import CLI
 from user import User
-from typing import List
 import bcrypt
 
 # A class for a CLI page for user login
 class LoginPage:
     # Runs the user login page. Returns the logged in user.
     # Expects a list of registered users, as a parameter.
-    def run(users: List[User]) -> User:
+    def run(users: list[User]) -> User:
         CLI.print_big("Login to SuperMem")
         while True:
             # Ask for username and password
@@ -22,7 +21,7 @@ class LoginPage:
                 return user
 
     # Finds the user with the given username, checks if the given password matches. Returns the user.
-    def get_user(users: List[User], username: str, password: str) -> User:
+    def get_user(users: list[User], username: str, password: str) -> User:
         bytes = password.encode("utf-8")
         for user in users:
             # If username matches, this is surely the user, because usernames are unique

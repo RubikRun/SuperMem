@@ -1,5 +1,4 @@
 import pwinput
-from typing import List
 
 # A class for common CLI functions, making sure CLI is used the same way across the whole application
 class CLI:
@@ -31,7 +30,7 @@ class CLI:
     # Asks for a CLI option. Repeats until user enters a valid option.
     # A valid option is an option from the given list of options.
     # Returns the entered valid option, or None if user wants to exit.
-    def ask_option(options: List[int]) -> int:
+    def ask_option(options: list[int]) -> int:
         while True:
             answer = CLI.ask_for("Option: ")
             if answer == "exit":
