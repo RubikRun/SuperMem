@@ -19,8 +19,11 @@ class IndexPage:
             CLI.print("2. Register\n")
             # User chooses an option
             option = CLI.ask_option([1, 2])
+            # If option is None we need to exit
+            if option is None:
+                return
             # Redirect to login or register page based on the chosen option
-            if option == 1:
+            elif option == 1:
                 user = LoginPage.run(users)
                 # TODO: redirect to home page
             else:

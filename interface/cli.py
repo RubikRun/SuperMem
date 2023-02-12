@@ -30,11 +30,14 @@ class CLI:
 
     # Asks for a CLI option. Repeats until user enters a valid option.
     # A valid option is an option from the given list of options.
-    # Returns the entered valid option.
+    # Returns the entered valid option, or None if user wants to exit.
     def ask_option(options: List[int]) -> int:
         while True:
+            answer = CLI.ask_for("Option: ")
+            if answer == "exit":
+                return None
             try:
-                option = int(CLI.ask_for("Option: "))
+                option = int(answer)
             except ValueError:
                 option = -1
             if option in options:
