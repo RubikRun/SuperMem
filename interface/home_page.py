@@ -3,7 +3,7 @@ from user import User
 from data.database import Database
 from dictionary import Dictionary
 from word import Word
-from random import shuffle
+from random import shuffle, randint
 
 CONFIDENCE_DELTA = 1
 
@@ -152,7 +152,9 @@ class HomePage:
             "Order words by their level (descending)",
             "Order words by your confidence (ascending)",
             "Order words by your confidence (descending)",
-            "Shuffle words"
+            "Shuffle words",
+            "Order words by your confidence, but with some shuffling (ascending)",
+            "Order words by your confidence, but with some shuffling (descending)"
         ])
         # Get word indices in the correct order
         word_idxs = self.get_words_ordered_in_mode(dictionary.words[:words_count], order_mode, language_idx)
@@ -197,4 +199,51 @@ class HomePage:
         elif mode == 5:
             word_idxs = list(range(len(words)))
             shuffle(word_idxs)
+        # NOT TESTED
+        elif mode == 6:
+            word_idxs = []
+            how_much_prob = 30
+
+            confs = [x * how_much_prob for x in self.user.confidences[lang_idx]]
+            confs_sum = sum(confs)
+
+            word_is_used = [False] * len(words)
+            words_used = 0
+            remaining_length = confs_sum
+            weat = 0
+            while words_used < len(words):
+                walk = randint(0, remaining_length)
+                while walk > 0:
+                    walk -= confs[weat]
+                    weat = (weat + 1) % len(words)
+                    while word_is_used[weat]:
+                        weat = (weat + 1) % len(words)
+                word_is_used[weat] = True
+                word_idxs.append(weat)
+                remaining_length -= confs[weat]
+                words_used += 1
+        # NOT TESTED
+        elif mode == 7:
+            word_idxs = []
+            how_much_prob = 30
+
+            confs = [(100 - x) * how_much_prob for x in self.user.confidences[lang_idx]]
+            confs_sum = sum(confs)
+
+            word_is_used = [False] * len(words)
+            words_used = 0
+            remaining_length = confs_sum
+            weat = 0
+            while words_used < len(words):
+                walk = randint(0, remaining_length)
+                while walk > 0:
+                    walk -= confs[weat]
+                    weat = (weat + 1) % len(words)
+                    while word_is_used[weat]:
+                        weat = (weat + 1) % len(words)
+                word_is_used[weat] = True
+                word_idxs.append(weat)
+                remaining_length -= confs[weat]
+                words_used += 1
+
         return word_idxs
