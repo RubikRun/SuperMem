@@ -40,12 +40,12 @@ class RegisterPage:
 
     # Asks user to choose a password, until they choose a valid one. Returns the password hashed.
     def ask_password() -> str:
-        password = CLI.ask_for("Choose a password: ")
+        password = CLI.ask_password("Choose a password: ")
         # Until the password is invalid, keep asking
         while not RegisterPage.is_input_valid(password, MIN_PASSWORD_LEN, PASSWORD_ALLOWED_CHARS):
             CLI.print("Invalid password. Should be at least " + str(MIN_PASSWORD_LEN) + " characters"
             " and contain only letters A-Z, a-z and numbers.\n")
-            password = CLI.ask_for("Choose a password: ")
+            password = CLI.ask_password("Choose a password: ")
         # Hash the valid password and return it
         bytes = password.encode("utf-8")
         salt = bcrypt.gensalt()
