@@ -12,7 +12,7 @@ class RegisterPage:
         password = RegisterPage.ask_password()
         main_language = CLI.ask_option("What's your main language?", languages)
         # Create the user and return it
-        user = User(username, password, main_language, [], [])
+        user = User(username, password, main_language, [], [], [])
         CLI.print("User {} created successfully.".format(username))
         return user
 

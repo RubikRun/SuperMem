@@ -56,11 +56,19 @@ class Database:
             active_languages_serialized = Database.EMPTY_LIST_CHAR
         for language in user.active_languages[1:]:
             active_languages_serialized += Database.ELEMENTS_SEPARATOR + language
+        # Serialize active words by connecting them with the elements separator
+        if user.active_words:
+            active_words_serialized = str(user.active_words[0])
+        else:
+            active_words_serialized = Database.EMPTY_LIST_CHAR
+        for word in user.active_words[1:]:
+            active_words_serialized += Database.ELEMENTS_SEPARATOR + str(word)
         # Serialize the user
         serialized = user.username + Database.PROPERTY_SEPARATOR\
             + user.password.decode() + Database.PROPERTY_SEPARATOR\
             + user.main_language + Database.PROPERTY_SEPARATOR\
-            + active_languages_serialized
+            + active_languages_serialized + Database.PROPERTY_SEPARATOR\
+            + active_words_serialized
         return serialized
 
     # Deserializes a user from a string. The string should be a serialized user.
@@ -69,20 +77,26 @@ class Database:
     #       They need to be set up separately.
     def deserialize_user(serialized: str) -> User:
         parts = serialized.split(Database.PROPERTY_SEPARATOR)
-        # Users have exactly 4 properties
-        if len(parts) != 4:
-            Logger.log_error("Serialized user is invalid. Must have exactly 4 properties.")
+        # Users have exactly 5 properties
+        if len(parts) != 5:
+            Logger.log_error("Serialized user is invalid. Must have exactly 5 properties.")
             return None
         # Extract the properties from the string parts
         username = parts[0]
         password = parts[1].encode("utf-8")
         main_language = parts[2]
+        # Handle active languages
         if parts[3] == Database.EMPTY_LIST_CHAR:
             active_languages = []
         else:
             active_languages = [lang.strip() for lang in parts[3].split(Database.ELEMENTS_SEPARATOR)]
+        # Handle active words
+        if parts[4] == Database.EMPTY_LIST_CHAR:
+            active_words = []
+        else:
+            active_words = [int(words_count) for words_count in parts[4].split(Database.ELEMENTS_SEPARATOR)]
         # Create a user and return it
-        user = User(username, password, main_language, active_languages, [])
+        user = User(username, password, main_language, active_languages, active_words, [])
         return user
 
     # Finds the dictionaries that user needs for his active languages.

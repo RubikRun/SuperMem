@@ -1,4 +1,5 @@
 from dictionary import Dictionary
+from word import Word
 
 MIN_USERNAME_LEN = 3
 MIN_PASSWORD_LEN = 6
@@ -14,12 +15,14 @@ class User:
         password: bytes,
         main_language: str,
         active_languages: list[str],
+        active_words: list[int],
         dictionaries: list[Dictionary]
     ):
         self.username = username
         self.password = password
         self.main_language = main_language
         self.active_languages = active_languages
+        self.active_words = active_words
         self.dictionaries = dictionaries
 
     # Checks if a username is valid
