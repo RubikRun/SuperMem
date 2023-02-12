@@ -13,7 +13,7 @@ class Database:
         self.dictionaries = []
         self.dict_filepaths = []
 
-########## User IO ##########
+########## User ##########
 
     # Exports users to a file
     def export_users(self, filepath: str) -> None:
@@ -46,7 +46,9 @@ class Database:
 
     # Serializes a user to a string. Returns the resulting string.
     def serialize_user(user: User) -> str:
-        serialized = user.username + Database.PROPERTY_SEPARATOR + user.password.decode()
+        serialized = user.username + Database.PROPERTY_SEPARATOR\
+            + user.password.decode() + Database.PROPERTY_SEPARATOR\
+            + user.main_language
         return serialized
 
     # Deserializes a user from a string. The string should be a serialized user.
@@ -54,17 +56,18 @@ class Database:
     def deserialize_user(serialized: str) -> User:
         parts = serialized.split(Database.PROPERTY_SEPARATOR)
         # Users have exactly 2 properties
-        if len(parts) != 2:
-            Logger.log_error("Serialized user is invalid. Must have exactly 2 string properties - username and password.")
+        if len(parts) != 3:
+            Logger.log_error("Serialized user is invalid. Must have exactly 3 string properties.")
             return None
-        # Extract the username and password from the string parts
+        # Extract the properties from the string parts
         username = parts[0]
         password = parts[1].encode("utf-8")
+        main_language = parts[2]
         # Create a user and return it
-        user = User(username, password)
+        user = User(username, password, main_language)
         return user
 
-########## Word IO ##########
+########## Word ##########
 
     # Serializes a word into a string. Returns the resulting string
     def serialize_word(word: Word) -> str:
@@ -103,7 +106,7 @@ class Database:
         word = Word(term_a, term_b, level, type)
         return word
 
-########## Dictionary IO ##########
+########## Dictionary ##########
 
     # Writes a dictionary to a file
     def write_dictionary(dictionary: Dictionary, filepath: str) -> None:
@@ -182,6 +185,16 @@ class Database:
                 filepath = Database.DEFAULT_DICT_DIRECTORY + file
                 txt_files.append(filepath)
         return txt_files
+
+    # Returns a list of all unique languages across the loaded dictionaries
+    def get_all_languages(self) -> list[str]:
+        languages = []
+        for dictionary in self.dictionaries:
+            if dictionary.language_a not in languages:
+                languages.append(dictionary.language_a)
+            if dictionary.language_b not in languages:
+                languages.append(dictionary.language_b)
+        return languages
 
     # String used to separate properties of an object when serializing it
     PROPERTY_SEPARATOR = ", "

@@ -7,7 +7,8 @@ database = Database()
 database.load_users(USERS_DATA_FILE)
 database.load_dictionaries()
 
-IndexPage.run(database.users)
+languages = database.get_all_languages()
+IndexPage.run(database.users, languages)
 
 database.export_users(USERS_DATA_FILE)
 database.export_dictionaries()

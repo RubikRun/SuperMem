@@ -1,2 +1,2 @@
-borisd, $2b$12$9eyfiJMoADlHzHXLUtGhwe.NhP3kX2x/munGXP7uTUlPLo8Js3nQi
-gosho, $2b$12$MIIc0Oi5onhLR4KUWPXdl.2R5j/efKC4.OV3ZHi1vPfi.M.rpsyTO
+borisd, $2b$12$Jb0isnsesxQjx0/8tVrdOOrR51L6g8ff/Lkk2kd4ZrZBOgHPsfiXy, Bulgarian
+gosho, $2b$12$EVfkc..W.xqJ3bRwBON0S.d4YQqR.xEJfG7BaRlkYCL8bzNCFHd1y, English

@@ -9,7 +9,7 @@ from user import User
 class IndexPage:
     # Runs the index page.
     # Expects a list of registered users, as a parameter.
-    def run(users: list[User]) -> None:
+    def run(users: list[User], languages: list[str]) -> None:
         while True:
             # Print welcome message and ask user to choose login or register
             CLI.print_big("Welcome to SuperMem!")
@@ -27,7 +27,7 @@ class IndexPage:
                 # TODO: redirect to home page
             else:
                 # Register a user and add it to the list of users
-                user = RegisterPage.run()
+                user = RegisterPage.run(languages)
                 users.append(user)
                 # After registration user is back to the index page so that they can login
                 
