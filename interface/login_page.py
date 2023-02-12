@@ -8,6 +8,7 @@ class LoginPage:
     # Runs the user login page. Returns the logged in user.
     # Expects a list of registered users, as a parameter.
     def run(users: List[User]) -> User:
+        CLI.print_big("Login to SuperMem")
         while True:
             username = LoginPage.ask_username()
             password = LoginPage.ask_password()

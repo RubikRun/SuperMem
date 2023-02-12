@@ -6,6 +6,7 @@ import bcrypt
 class RegisterPage:
     # Runs the user registration page. Returns the registrated user.
     def run() -> User:
+        CLI.print_big("Register to SuperMem")
         # Ask for username and password
         username = RegisterPage.ask_username()
         password = RegisterPage.ask_password()
