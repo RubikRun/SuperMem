@@ -2,6 +2,8 @@ from interface.cli import CLI
 from user import User
 from data.database import Database
 from dictionary import Dictionary
+from word import Word
+from random import shuffle
 
 CONFIDENCE_DELTA = 1
 
@@ -143,8 +145,20 @@ class HomePage:
         ]) == 2
         # Check whether dictionary languages should be swapped
         should_swap_dict = (from_kn != dict_from_kn)
+        # Ask user for mode of ordering the words
+        order_mode = CLI.ask_option_num(
+            "Choose mode:", [
+            "Order words by their level (ascending)",
+            "Order words by their level (descending)",
+            "Order words by your confidence (ascending)",
+            "Order words by your confidence (descending)",
+            "Shuffle words"
+        ])
+        # Get word indices in the correct order
+        word_idxs = self.get_words_ordered_in_mode(dictionary.words[:words_count], order_mode, language_idx)
         # Traverse the words that user knows
-        for word_idx, word in enumerate(dictionary.words[:words_count]):
+        for word_idx in word_idxs:
+            word = dictionary.words[word_idx]
             # Retrieve the term that will be asked and the term that should be answered, based on the direction of the test
             asked_term = word.term_a
             real_answer = word.term_b
@@ -168,3 +182,19 @@ class HomePage:
                 if self.user.confidences[language_idx][word_idx] >= CONFIDENCE_DELTA:
                     self.user.confidences[language_idx][word_idx] -= CONFIDENCE_DELTA
                 CLI.print("No. It's {}    (confidence: {})\n".format(real_answer, self.user.confidences[language_idx][word_idx]))
+
+    # Orders words in the given mode and returns a list of indices to the words in the original list. Does not modify the original list
+    def get_words_ordered_in_mode(self, words: list[Word], mode: int, lang_idx: int) -> list[int]:
+        word_idxs = None
+        if mode == 1:
+            word_idxs = [tup[0] for tup in sorted(enumerate(words), key=lambda x:x[1].level)]
+        elif mode == 2:
+            word_idxs = [tup[0] for tup in sorted(enumerate(words), key=lambda x:x[1].level, reverse = True)]
+        elif mode == 3:
+            word_idxs = list(tup[1].index for tup in sorted(zip(self.user.confidences[lang_idx], words)))
+        elif mode == 4:
+            word_idxs = list(tup[1].index for tup in sorted(zip(self.user.confidences[lang_idx], words), reverse = True))
+        elif mode == 5:
+            word_idxs = list(range(len(words)))
+            shuffle(word_idxs)
+        return word_idxs

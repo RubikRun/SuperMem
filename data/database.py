@@ -192,7 +192,7 @@ class Database:
 
     # Deserializes a word from a string. The string should be a serialized word.
     # Returns a Word object with the properties from the string.
-    def deserialize_word(serialized: str) -> Word:
+    def deserialize_word(serialized: str, index: int) -> Word:
         parts = serialized.split(Database.PROPERTY_SEPARATOR)
         # Words have exactly 4 properties
         if len(parts) != 4:
@@ -216,7 +216,7 @@ class Database:
             Logger.log_error("Serialized word has an invalid type.")
             return None
         # Create a word and return it
-        word = Word(term_a, term_b, level, type)
+        word = Word(term_a, term_b, level, type, index)
         return word
 
 ########## Dictionary ##########
@@ -245,6 +245,7 @@ class Database:
         language_a = None
         language_b = None
         words = []
+        word_index = 0
         # Traverse lines of the file
         for line_idx, line in enumerate(file):
             # Handle lines that specify the languages
@@ -256,10 +257,11 @@ class Database:
                 continue
             # At this point the line is a serialized word
             serialized = line.strip()
-            word = Database.deserialize_word(serialized)
+            word = Database.deserialize_word(serialized, word_index)
             if word is None:
                 Logger.log_error("Invalid word on line {} of dictionary file {} will be skipped.".format(line_idx + 1, filepath))
                 continue
+            word_index += 1
             words.append(word)
         file.close()
         # Create a dictionary and return it
