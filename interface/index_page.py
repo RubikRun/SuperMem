@@ -1,6 +1,7 @@
 from interface.cli import CLI
 from interface.login_page import LoginPage
 from interface.register_page import RegisterPage
+from interface.home_page import HomePage
 from user import User
 
 # A class for a CLI index page.
@@ -24,7 +25,9 @@ class IndexPage:
             # Redirect to login or register page based on the chosen option
             elif option == 1:
                 user = LoginPage.run(users)
-                # TODO: redirect to home page
+                home_page = HomePage(user)
+                home_page.run()
+                # After exiting the home page user is back to the index page
             else:
                 # Register a user and add it to the list of users
                 user = RegisterPage.run(languages)

@@ -11,7 +11,7 @@ class CLI:
     def print(msg: str) -> None:
         print(CLI.MSG_PREFIX, msg, end="", sep="")
     def print_big(msg: str) -> None:
-        print(CLI.BIG_MSG_PREFIX, msg, CLI.BIG_MSG_SUFFIX, sep="")
+        print("\n", CLI.BIG_MSG_PREFIX, msg, CLI.BIG_MSG_SUFFIX, sep="")
 
     # Asks user for their input by printing some message and waiting for their answer.
     # Returns the answer.
