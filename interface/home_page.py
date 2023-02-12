@@ -16,13 +16,16 @@ class HomePage:
             # User chooses an option
             option = CLI.ask_option_num(
                 "Choose an option, or type \"exit\":", [
-                "Start learning a new language"
+                "Start learning a new language",
+                "What languages am I learning?"
             ])
             # If option is None we need to exit
             if option is None:
                 return
             elif option == 1:
                 self.start_learning_new_language(languages)
+            elif option == 2:
+                self.show_active_languages()
 
     # Asks a user what language they want to start learning, gives them a list of only the languages that are available for them.
     # Adds the chosen language to the user's active languages
@@ -38,3 +41,13 @@ class HomePage:
             return
         self.user.active_languages.append(language)
         CLI.print("Okay. {} added to your active languages.\n".format(language))
+
+    # Shows the user their active languages.
+    def show_active_languages(self) -> None:
+        if not self.user.active_languages:
+            CLI.print("You are not learning any languages.\n")
+            return
+        languages_str = self.user.active_languages[0]
+        for language in self.user.active_languages[1:]:
+            languages_str += ", " + language
+        CLI.print("You are learning {}\n".format(languages_str))
