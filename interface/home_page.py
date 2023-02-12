@@ -18,7 +18,8 @@ class HomePage:
             option = CLI.ask_option_num(
                 "Choose an option, or type \"exit\":", [
                 "Start learning a new language",
-                "What languages am I learning?"
+                "What languages am I learning?",
+                "Learn a new word"
             ])
             # If option is None we need to exit
             if option is None:
@@ -27,6 +28,8 @@ class HomePage:
                 self.start_learning_new_language(database)
             elif option == 2:
                 self.show_active_languages()
+            elif option == 3:
+                self.learn_new_word()
 
     # Asks a user what language they want to start learning, gives them a list of only the languages that are available for them.
     # Adds the chosen language to the user's active languages
@@ -36,7 +39,12 @@ class HomePage:
         language = CLI.ask_option("What language do you want to start learning?", available_languages)
         if language is None:
             return
+        # Add the new language to user's active languages
         self.user.active_languages.append(language)
+        # Add a new count for active words of the new language, beginning at 0
+        self.user.active_words.append(0)
+        # Setup user's dictionaries again to handle the new language
+        database.setup_user_dictionaries(self.user)
         CLI.print("Okay. {} added to your active languages.\n".format(language))
 
     # Returns a list with languages that the user can learn and that have a dictionary with the user's main language.
@@ -68,3 +76,33 @@ class HomePage:
         for language in self.user.active_languages[1:]:
             languages_str += ", " + language
         CLI.print("You are learning {}\n".format(languages_str))
+
+    # Lets user learn a new word in one of their active languages.
+    # The new word is the next word after user's active words in the chosen language.
+    # After showing the word to the user, user's active words are increased by one for the chosen language
+    def learn_new_word(self) -> None:
+        # Choose a language
+        language_idx = self.choose_active_language()
+        if language_idx is None:
+            CLI.print("You have no active languages. Start learning a language first.\n")
+            return
+        language = self.user.active_languages[language_idx]
+        # Retrieve the next word from the dictionary of the chosen language
+        word = self.user.dictionaries[language_idx].words[self.user.active_words[language_idx]]
+        # Increase the count of active words for the chosen language
+        self.user.active_words[language_idx] += 1
+        # Show the new word to the user
+        CLI.print("Okay, here's a new word in {}:\n".format(language))
+        CLI.print_clearly("{} <-----means-----> {}".format(word.term_a, word.term_b))
+
+    # Lets user choose one of their active languages, or if it's just a single language, directly returns it.
+    # Returns the index of the chosen language (0-based)
+    def choose_active_language(self) -> int:
+        # If active languages are 0 or 1, there's nothing to choose
+        if not self.user.active_languages:
+            return None
+        if len(self.user.active_languages) == 1:
+            return 0
+        # Ask for an active language
+        language_num = CLI.ask_option_num("Choose one of the languages that you're learning.", self.user.active_languages)
+        return language_num - 1

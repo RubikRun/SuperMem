@@ -5,13 +5,17 @@ class CLI:
     # Prefix that is printed before any message to indicate that it's printed by the application's CLI
     MSG_PREFIX = "---> "
     BIG_MSG_PREFIX = "-------> "
-    BIG_MSG_SUFFIX = " <-------"
+    BIG_MSG_SUFFIX = " <-------\n"
+    CLEAR_MSG_PREFIX = "\n          "
+    CLEAR_MSG_SUFFIX = "\n"
 
     # Prints a message on the console
     def print(msg: str) -> None:
         print(CLI.MSG_PREFIX, msg, end="", sep="")
     def print_big(msg: str) -> None:
-        print("\n", CLI.BIG_MSG_PREFIX, msg, CLI.BIG_MSG_SUFFIX, sep="")
+        print("\n", CLI.BIG_MSG_PREFIX, msg, CLI.BIG_MSG_SUFFIX, end="", sep="")
+    def print_clearly(msg: str) -> None:
+        print(CLI.CLEAR_MSG_PREFIX, msg, CLI.CLEAR_MSG_SUFFIX, end="", sep="")
 
     # Asks user for their input by printing some message and waiting for their answer.
     # Returns the answer.
