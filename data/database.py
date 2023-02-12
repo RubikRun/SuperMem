@@ -46,25 +46,38 @@ class Database:
 
     # Serializes a user to a string. Returns the resulting string.
     def serialize_user(user: User) -> str:
+        # Serialize active languages by connecting them with the elements separator
+        if user.active_languages:
+            active_languages_serialized = user.active_languages[0]
+        else:
+            active_languages_serialized = Database.EMPTY_LIST_CHAR
+        for language in user.active_languages[1:]:
+            active_languages_serialized += Database.ELEMENTS_SEPARATOR + language
+        # Serialize the user
         serialized = user.username + Database.PROPERTY_SEPARATOR\
             + user.password.decode() + Database.PROPERTY_SEPARATOR\
-            + user.main_language
+            + user.main_language + Database.PROPERTY_SEPARATOR\
+            + active_languages_serialized
         return serialized
 
     # Deserializes a user from a string. The string should be a serialized user.
     # Returns a User object with the properties from the string.
     def deserialize_user(serialized: str) -> User:
         parts = serialized.split(Database.PROPERTY_SEPARATOR)
-        # Users have exactly 2 properties
-        if len(parts) != 3:
-            Logger.log_error("Serialized user is invalid. Must have exactly 3 string properties.")
+        # Users have exactly 4 properties
+        if len(parts) != 4:
+            Logger.log_error("Serialized user is invalid. Must have exactly 4 properties.")
             return None
         # Extract the properties from the string parts
         username = parts[0]
         password = parts[1].encode("utf-8")
         main_language = parts[2]
+        if parts[3] == Database.EMPTY_LIST_CHAR:
+            active_languages = []
+        else:
+            active_languages = [lang.strip() for lang in parts[3].split(Database.ELEMENTS_SEPARATOR)]
         # Create a user and return it
-        user = User(username, password, main_language)
+        user = User(username, password, main_language, active_languages)
         return user
 
 ########## Word ##########
@@ -198,8 +211,12 @@ class Database:
 
     # String used to separate properties of an object when serializing it
     PROPERTY_SEPARATOR = ", "
+    # String used to separate elements of properties with multi elements
+    ELEMENTS_SEPARATOR = " & "
     # Prefixes of lines in a dictionary file that specify the two languages of the dictionary
     LANGUAGE_A_PREFIX = "__language_a="
     LANGUAGE_B_PREFIX = "__language_b="
     # Default directory for dictionary files
     DEFAULT_DICT_DIRECTORY = "data/dictionaries/"
+    # A character representing an empty list in a serialized object
+    EMPTY_LIST_CHAR = "_"

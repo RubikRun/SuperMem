@@ -5,12 +5,12 @@ PASSWORD_ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01
 
 # A class for a user of the application
 class User:
-    # Creates a user with a username, password and their main language
-    def __init__(self, username, password, main_language):
+    # Creates a user with a username, password, their main language and their active languages
+    def __init__(self, username: str, password: bytes, main_language: str, active_languages: list[str] = []):
         self.username = username
         self.password = password
         self.main_language = main_language
-        self.active_languages = []
+        self.active_languages = active_languages
 
     # Checks if a username is valid
     def is_username_valid(username: str) -> bool:
