@@ -3,6 +3,8 @@ from user import User
 from data.database import Database
 from dictionary import Dictionary
 
+CONFIDENCE_DELTA = 1
+
 # A class for a home page of a user
 # Each user has their own home page with their languages and words
 class HomePage:
@@ -142,7 +144,7 @@ class HomePage:
         # Check whether dictionary languages should be swapped
         should_swap_dict = (from_kn != dict_from_kn)
         # Traverse the words that user knows
-        for word in dictionary.words[:words_count]:
+        for word_idx, word in enumerate(dictionary.words[:words_count]):
             # Retrieve the term that will be asked and the term that should be answered, based on the direction of the test
             asked_term = word.term_a
             real_answer = word.term_b
@@ -159,6 +161,10 @@ class HomePage:
             answer = CLI.ask_for("Answer: ")
             # Check if it matches the real answer
             if answer == real_answer:
-                CLI.print("Correct!\n")
+                if self.user.confidences[language_idx][word_idx] <= 100 - CONFIDENCE_DELTA:
+                    self.user.confidences[language_idx][word_idx] += CONFIDENCE_DELTA
+                CLI.print("Correct!    (confidence: {})\n".format(self.user.confidences[language_idx][word_idx]))
             else:
-                CLI.print("No. It's {}\n".format(real_answer))
+                if self.user.confidences[language_idx][word_idx] >= CONFIDENCE_DELTA:
+                    self.user.confidences[language_idx][word_idx] -= CONFIDENCE_DELTA
+                CLI.print("No. It's {}    (confidence: {})\n".format(real_answer, self.user.confidences[language_idx][word_idx]))
