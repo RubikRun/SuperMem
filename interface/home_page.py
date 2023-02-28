@@ -198,10 +198,10 @@ class HomePage:
             word_idxs = [tup[0] for tup in sorted(enumerate(words), key=lambda x:x[1].level, reverse = True)]
         elif mode == 3:
             # Sort words by their confidences, ascending
-            word_idxs = list(tup[1].index for tup in sorted(zip(confidences, words)))
+            word_idxs = [tup[0] for tup in sorted(enumerate(confidences), key=lambda x:x[1])]
         elif mode == 4:
             # Sort words by their confidences, descending
-            word_idxs = list(tup[1].index for tup in sorted(zip(confidences, words), reverse = True))
+            word_idxs = [tup[0] for tup in sorted(enumerate(confidences), key=lambda x:x[1], reverse = True)]
         elif mode == 5:
             # Shuffle words
             word_idxs = list(range(len(words)))
