@@ -3,7 +3,7 @@ from user import User
 from data.database import Database
 from dictionary import Dictionary
 from word import Word
-from random import shuffle
+from random import shuffle, randint
 
 CONFIDENCE_DELTA = 1
 
@@ -203,8 +203,26 @@ class HomePage:
             # Sort words by their confidences, descending
             word_idxs = [tup[0] for tup in sorted(enumerate(confidences), key=lambda x:x[1], reverse = True)]
         elif mode == 5:
+            word_idxs = [tup[0] for tup in sorted(enumerate(confidences), key=lambda x:x[1])]
+        elif mode == 6:
             # Shuffle words
             word_idxs = list(range(len(words)))
             shuffle(word_idxs)
         # Return sorted indices
         return word_idxs
+    
+    # Shuffles an array, not fully, but just a bit.
+    # How much the array is shuffled is determined by the randomness parameter, call it R.
+    # R ranges from 0 to 1. R=0 means no shuffle. R=1 means full shuffle (not mathematically correc).
+    # The shuffle is done by performing random swaps of elements
+    def shuffle_a_bit(array: list, randomness: float) -> list:
+        length = len(array)
+        swap_range_ratio = randomness ** 3
+        swap_range = round(swap_range_ratio * (length - 2) + 2)
+        swaps_count_ratio = randomness ** 2
+        swaps_count = round(swaps_count_ratio * length)
+        for _ in range(swaps_count):
+            swap_size = randint(2, swap_range)
+            left_idx = randint(0, length - swap_size)
+            right_idx = left_idx + swap_size - 1
+            array[left_idx], array[right_idx] = array[right_idx], array[left_idx]
