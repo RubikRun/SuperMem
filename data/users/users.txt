@@ -1,3 +1,1 @@
-borisd, $2b$12$Jb0isnsesxQjx0/8tVrdOOrR51L6g8ff/Lkk2kd4ZrZBOgHPsfiXy, Bulgarian, _, _, _
-gosho, $2b$12$EVfkc..W.xqJ3bRwBON0S.d4YQqR.xEJfG7BaRlkYCL8bzNCFHd1y, English, Bulgarian & Spanish, 5 & 3, 5-14-10-6-16 & 0-0-0
-rubikrun, $2b$12$GF/VKDEsPfHEOAPhhXgVsehMxEunoA5PZo.2i166OzPb.yMIKcpBG, Spanish, _, _, _
+rubikrun, $2b$12$zcGFLe4DiV5Fx.9uGBxzaO3VN1aHuEXotUXZoihkTU8QjgG2OU/E6, English, _, _, _

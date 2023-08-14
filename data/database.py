@@ -248,6 +248,10 @@ class Database:
         word_index = 0
         # Traverse lines of the file
         for line_idx, line in enumerate(file):
+            # For now skip empty lines
+            # TODO: An empty line should indicate next page, we should keep track of the page of each word
+            if len(line) <= 1:
+                continue
             # Handle lines that specify the languages
             if line.startswith(Database.LANGUAGE_A_PREFIX):
                 language_a = line[len(Database.LANGUAGE_A_PREFIX):].strip()

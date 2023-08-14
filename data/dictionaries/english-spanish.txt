@@ -1,13 +1,691 @@
 __language_a=English
 __language_b=Spanish
-Hello, Hola, 1, interjection
-Goodbye, Adiós, 4, interjection
-man, el hombre, 8, noun
-woman, la mujer, 10, noun
-cat, la gato, 14, noun
-dog, el perro, 18, noun
-apple, la manzana, 24, noun
-bread, el pan, 28, noun
-to speak, hablar, 34, verb
-to work, trabajar, 40, verb
-lazy, perezoso, 48, adjective
+
+Hello, Hola, 1, unknown
+Goodbye, Adiós, 1, unknown
+man, el hombre, 1, unknown
+woman, la mujer, 1, unknown
+Good morning, Buenos días, 1, unknown
+Good afternoon, Buenas tardes, 1, unknown
+Good night, Buenas noches, 1, unknown
+boy, el niño / el muchacho, 1, unknown
+girl, la niña / la muchacha, 1, unknown
+I am sorry, Lo siento / Disculpe / Perdón, 1, unknown
+Please, Por favor, 1, unknown
+Bless you / Cheers, Salud, 1, unknown
+Nice to meet you, Mucho gusto, 1, unknown
+bread, el pan, 1, unknown
+apple, la manzana, 1, unknown
+Thank you, Gracias, 1, unknown
+Yes, Sí, 1, unknown
+No, No, 1, unknown
+What?, ¿Qué?, 1, unknown
+Why?, ¿Por qué?, 1, unknown
+Where?, ¿Dónde?, 1, unknown
+Who?, ¿Quién?, 1, unknown
+How?, ¿Cómo?, 1, unknown
+When?, ¿Cuándo?, 1, unknown
+
+yesterday, ayer, 1, unknown
+today, hoy, 1, unknown
+tomorrow / morning, mañana, 1, unknown
+but, pero, 1, unknown
+What is your name?, ¿Cómo te llamas?, 1, unknown
+My name is, Me llamo / Mi nombre es, 1, unknown
+How are you?, ¿Cómo estás?, 1, unknown
+I am well, Estoy bien, 1, unknown
+See you later, Hasta luego, 1, unknown
+You are welcome, De nada, 1, unknown
+dog, el perro, 1, unknown
+cat, el gato, 1, unknown
+absolutely, absolutamente, 1, unknown
+good, bueno, 1, unknown
+fantastic, fantástico, 1, unknown
+very, muy / mucho, 1, unknown
+here, aquí, 1, unknown
+for, para, 1, unknown
+for me / in my opinion, para mí, 1, unknown
+delicious, delicioso, 1, unknown
+extraordinary, extraordinario, 1, unknown
+beautiful, hermoso / precioso, 1, unknown
+always, siempre, 1, unknown
+perfect, perfecto, 1, unknown
+
+this, esta, 1, unknown
+that, eso / aquello, 1, unknown
+everything, todo, 1, unknown
+everybody, todo el mundo / todos, 1, unknown
+everywhere, en todos partes, 1, unknown
+bad, malo, 1, unknown
+ugly, feo, 1, unknown
+restaurant, el restaurante, 1, unknown
+chicken, el pollo, 1, unknown
+terrible, terrible, 1, unknown
+nice, simpático, 1, unknown
+water, el agua, 1, unknown
+milk, la leche, 1, unknown
+to eat, comer, 1, unknown
+to drink, beber, 1, unknown
+bus, el autobús, 1, unknown
+money, el dinero, 1, unknown
+airport, el aeropuerto, 1, unknown
+train, el tren, 1, unknown
+bathroom, el baño, 1, unknown
+supermarket, el supermercado, 1, unknown
+closed, cerrado, 1, unknown
+street, el calle, 1, unknown
+hotel, el hotel, 1, unknown
+hospital, el hospital, 1, unknown
+
+museum, el museo, 1, unknown
+ticket, el boleto, 1, unknown
+bank / bench, el banco, 1, unknown
+phone, el teléfono, 1, unknown
+to need, necesitar, 1, unknown
+suitcase, la maleta, 1, unknown
+passport, el pasaporte, 1, unknown
+reservation, la reserva, 1, unknown
+to have, tener, 1, unknown
+month, el mes, 1, unknown
+day, el día, 1, unknown
+table, la mesa, 1, unknown
+person, la persona, 1, unknown
+with, con, 1, unknown
+without, sin, 1, unknown
+meat, la carne, 1, unknown
+cheese, el queso, 1, unknown
+sandwich, el sándwich, 1, unknown
+hamburger, la hamburguesa, 1, unknown
+fish, el pescado, 1, unknown
+cup, la taza, 1, unknown
+glass, el vaso, 1, unknown
+sugar, el azúcar / la azúcar, 1, unknown
+orange, la naranja, 1, unknown
+
+juice, el zumo / el jugo, 1, unknown
+pretty, bonito / lindo, 1, unknown
+brunette / dark-haired, moreno, 1, unknown
+blonde, rubio, 1, unknown
+skinny, flaco, 1, unknown
+fat, gordo, 1, unknown
+tall, alto, 1, unknown
+short, bajo, 1, unknown
+funny, gracioso / cómico, 1, unknown
+handsom, guapo, 1, unknown
+serious, serio, 1, unknown
+ambitious, ambicioso, 1, unknown
+lazy, perezoso, 1, unknown
+shy, tímido, 1, unknown
+honest, honesto, 1, unknown
+generous, generoso, 1, unknown
+book, el libro, 1, unknown
+hand, la mano, 1, unknown
+kitchen, la cocina, 1, unknown
+tired, cansado, 1, unknown
+end, el fin, 1, unknown
+week, la semana, 1, unknown
+weekend, el fin de semana, 1, unknown
+
+to speak, hablar, 1, unknown
+to sing, cantar, 1, unknown
+to search / look for, buscar, 1, unknown
+to walk, caminar / andar, 1, unknown
+to swim, nadar, 1, unknown
+to work, trabajar, 1, unknown
+to like, gustar, 1, unknown
+to study, estudiar, 1, unknown
+to listen, escuchar, 1, unknown
+to buy, comprar, 1, unknown
+What time is it?, ¿Qué hora es?, 1, unknown
+at / to, a, 1, unknown
+of / from, de, 1, unknown
+store, la tienda, 1, unknown
+car, el coche / el carro, 1, unknown
+building, el edificio, 1, unknown
+exercise, el ejercicio, 1, unknown
+to mean, significar, 1, unknown
+to understand, entender / comprender, 1, unknown
+to start, empezar, 1, unknown
+word, la palabra, 1, unknown
+to look at, mirar, 1, unknown
+and, y, 1, unknown
+
+unit, la unidad, 1, unknown
+school, la escuela / el colegio, 1, unknown
+house, la casa, 1, unknown
+post office, la oficina de correos, 1, unknown
+post / mail, el correo, 1, unknown
+office, la oficina, 1, unknown
+bookstore, la librería, 1, unknown
+park, el parque, 1, unknown
+cinema, el cine, 1, unknown
+bakery, panadería, 1, unknown
+university, la universidad, 1, unknown
+mall, el centro comercial, 1, unknown
+true, verdadero, 1, unknown
+false, falso, 1, unknown
+truth, la verdad, 1, unknown
+school supplies, los materiales escolares, 1, unknown
+material, el material, 1, unknown
+pencil, el lápiz, 1, unknown
+pen, la pluma / el bolígrafo, 1, unknown
+notebook, el cuaderno, 1, unknown
+paper, el papel, 1, unknown
+marker, el marcador, 1, unknown
+eraser, la goma de borrar, 1, unknown
+
+tyre, la llanta / la goma, 1, unknown
+to erase, borrar, 1, unknown
+calculator, la calculadora, 1, unknown
+except, excepto, 1, unknown
+businessman / businessowner, el empresario, 1, unknown
+company, la empresa / la compañía, 1, unknown
+cook, el cocinero, 1, unknown
+student, el/la estudiante / el/la alumno, 1, unknown
+architecture, la arquitectura, 1, unknown
+to take / to carry / to wear, llevar, 1, unknown
+to complete, completar, 1, unknown
+record card / file, la ficha, 1, unknown
+journalist, el/la periodista, 1, unknown
+nationality, la nacionalidad, 1, unknown
+profession, la profesión, 1, unknown
+to travel, viajar, 1, unknown
+trip / journey, viaje, 1, unknown
+agency, la agencia, 1, unknown
+then / later, luego, 1, unknown
+to introduce, presentar, 1, unknown
+previous / front, anterior, 1, unknown
+next / following, siguiente, 1, unknown
+country, el país, 1, unknown
+city, la ciudad, 1, unknown
+
+letter / lyrics, la letra, 1, unknown
+if, si, 1, unknown
+to say / to tell, decir, 1, unknown
+to spell, deletrear, 1, unknown
+hobby, la afición, 1, unknown
+language, el idioma, 1, unknown
+nurse, la enfermera, 1, unknown
+waiter, el camarero, 1, unknown
+to give, dar, 1, unknown
+age, la edad, 1, unknown
+How many? / How much?, ¿Cuánto?, 1, unknown
+to use / to dedicate, dedicar, 1, unknown
+at sign (@), la arroba, 1, unknown
+point / dot, el punto, 1, unknown
+to sit, sentar, 1, unknown
+Which?, ¿Cuál?, 1, unknown
+to write, escribir, 1, unknown
+immediately, inmediamente / enseguida, 1, unknown
+to call, llamar, 1, unknown
+to do / to make, hacer, 1, unknown
+question, la pregunta, 1, unknown
+to ask, preguntar, 1, unknown
+to know / to find out, saber, 1, unknown
+
+window, la ventana, 1, unknown
+to can, poder, 1, unknown
+to think, pensar, 1, unknown
+friendship, la amistad, 1, unknown
+some, algún, 1, unknown
+What do you do? (for a living), ¿A qué te dedicas?, 1, unknown
+programmer, el programador, 1, unknown
+to repeat, repetir, 1, unknown
+to come, venir, 1, unknown
+classroom, el aula, 1, unknown
+to learn, aprender, 1, unknown
+translator, el traductor, 1, unknown
+to greet, saludar, 1, unknown
+to say goodbye / to see off / to fire, despedir, 1, unknown
+companion / classmate, compañero, 1, unknown
+to put, poner, 1, unknown
+above / on top of, encima de, 1, unknown
+below, debajo de, 1, unknown
+sound, el sonido, 1, unknown
+to sound / to ring, sonar, 1, unknown
+other, otro, 1, unknown
+to return, volver, 1, unknown
+How is it going?, ¿Qué tal?, 1, unknown
+What's up?, ¿Qué pasa?, 1, unknown
+
+sentence, la oración, 1, unknown
+dialogue, el diálogo, 1, unknown
+according to / depending on, según, 1, unknown
+side, el lado, 1, unknown
+order, la orden, 1, unknown
+to order / to arrange, ordenar, 1, unknown
+phrase / sentence, la frase, 1, unknown
+beach, la playa, 1, unknown
+slow, lento, 1, unknown
+slowly, despacio, 1, unknown
+page, la página, 1, unknown
+to know / to meet, conocer, 1, unknown
+resource, el resurso, 1, unknown
+communicative, comunicativo, 1, unknown
+to communicate, comunicar, 1, unknown
+to ask for / to order, pedir, 1, unknown
+on / about, sobre, 1, unknown
+grammar, la gramática, 1, unknown
+gender, el género, 1, unknown
+conjugation, la conjugacíon, 1, unknown
+alphabet, el abecadario, 1, unknown
+couple / partner, la pareja, 1, unknown
+to find, encontrar, 1, unknown
+stone / rock, la piedra, 1, unknown
+object, el objeto, 1, unknown
+
+trash, la basura, 1, unknown
+trash can, la papelera / el cubo de basura, 1, unknown
+chair, la silla, 1, unknown
+project / plan, el proyecto, 1, unknown
+computer, el ordenador, 1, unknown
+blackboard, la pizarra, 1, unknown
+backpack, la mochila, 1, unknown
+leaf / sheet, la hoja, 1, unknown
+sheet of paper, la hoja de papel, 1, unknown
+to pronounce, pronunciar, 1, unknown
+to explore, explorar, 1, unknown
+to reflect / to think over, reflexionar, 1, unknown
+row, la fila, 1, unknown
+column, la columna, 1, unknown
+corresponding, correspondiente, 1, unknown
+bold / boldface, negrita, 1, unknown
+food, la comida / el alimento, 1, unknown
+to collect, coleccionar, 1, unknown
+check / account / sum, la cuenta, 1, unknown
+same, mismo, 1, unknown
+gym, el gimnasio, 1, unknown
+to play / to bet, jugar, 1, unknown
+war, la guerra, 1, unknown
+ham, el jamón, 1, unknown
+
+boss, el jefe, 1, unknown
+guitar, la guitarra, 1, unknown
+young, joven, 1, unknown
+to connect / to relate, relacionar, 1, unknown
+image, la imagen, 1, unknown
+to see / to watch, ver, 1, unknown
+to ski, esquiar, 1, unknown
+to dance, bailar, 1, unknown
+to read, leer, 1, unknown
+to touch / to play (an instrument), tocar, 1, unknown
+to underline, subrayar, 1, unknown
+to end / to finish, terminar, 1, unknown
+last name / surname, apellido, 1, unknown
+mail, el correo, 1, unknown
+to serve / to be useful, servir, 1, unknown
+to follow, seguir, 1, unknown
+famous, famoso, 1, unknown
+to imagine, imaginar, 1, unknown
+data, el dato, 1, unknown
+date (calendar), la fecha, 1, unknown
+date (romantic), la cita, 1, unknown
+the rest / the others, los demás, 1, unknown
+Where are you from?, ¿De dónde eres?, 1, unknown
+
+How old are you?, ¿Cuántos años tienes?, 1, unknown
+What's your job?, ¿En qué trabajas?, 1, unknown
+athlete, el/la deportista / el/la atleta, 1, unknown
+dictionary, el diccionario, 1, unknown
+vacation, las vacaciones, 1, unknown
+holiday / party, la fiesta, 1, unknown
+to organize, organizar, 1, unknown
+time (the last time), la vez, 1, unknown
+time / weather, el tiempo, 1, unknown
+turn (when waiting), el turno, 1, unknown
+again / once more, otra vez / de nuevo, 1, unknown
+now, ahora, 1, unknown
+each / every, cada, 1, unknown
+conversation, la conversación, 1, unknown
+information, la información, 1, unknown
+poster, el cartel / el póster, 1, unknown
+to create, crear, 1, unknown
+for example, por ejemplo, 1, unknown
+to add / to incorporate, añadir, 1, unknown
+to draw, dibujar, 1, unknown
+drawing, el dibujo, 1, unknown
+to observe / to watch, observar, 1, unknown
+way, el camino / la manera, 1, unknown
+to use, usar / utilizar, 1, unknown
+
+treatment, el tratamiento / el trato (behavior), 1, unknown
+equal, igual, 1, unknown
+tongue / language, la lengua, 1, unknown
+situation, la situación, 1, unknown
+active, activo, 1, unknown
+activity, la actividad, 1, unknown
+design, el diseño, 1, unknown
+to design, diseñar, 1, unknown
+to fix, fijar, 1, unknown
+better / best, mejor / el mejor, 1, unknown
+question / issue / matter, la cuestión, 1, unknown
+to carry out / to perform, realizar, 1, unknown
+to come true / to be realized, realizarse, 1, unknown
+individuality, la individualidad, 1, unknown
+individually, individualmente, 1, unknown
+also / too, también, 1, unknown
+to notice / to pay attention, fijarse, 1, unknown
+to consider, considerar, 1, unknown
+appropriate, adecuado / oportuno, 1, unknown
+to reinforce, reforzar, 1, unknown
+certain / particular, determinado / cierto, 1, unknown
+determined, determinado / decidido, 1, unknown
+aspect, el aspecto, 1, unknown
+to turn out / to work, resultar, 1, unknown
+
+to help, ayudar, 1, unknown
+opportunity, la oportunidad, 1, unknown
+occasion / opportunity, la ocasíon, 1, unknown
+to pay, pagar, 1, unknown
+to believe / to think, creer, 1, unknown
+case, el caso, 1, unknown
+thing, la cosa, 1, unknown
+combination, la combinación, 1, unknown
+mechanic, el mecánico, 1, unknown
+shop assistant / salesperson, el dependiente, 1, unknown
+workshop / studio, el taller, 1, unknown
+to come from, proceder, 1, unknown
+to take care of / to pay attention, cuidar / cuidarse, 1, unknown
+care, el cuidado / la atención, 1, unknown
+Be careful, Ten cuidado, 1, unknown
+state / condition, el estado, 1, unknown
+to state / to declare, declarar, 1, unknown
+yogurt, el yogur, 1, unknown
+fries, las patatas fritas, 1, unknown
+potato, la patata, 1, unknown
+fried, frito, 1, unknown
+bicycle, la bicicleta, 1, unknown
+beer, la cerveza, 1, unknown
+to classify / to sort, clasificar, 1, unknown
+
+reason, el porqué / la razón, 1, unknown
+as / like, como, 1, unknown
+that (said that), que, 1, unknown
+because / why (that's why), porque, 1, unknown
+where (the place where), donde, 1, unknown
+who / whom (the person who), quien, 1, unknown
+when (when it's hot), cuando, 1, unknown
+teacher, el profesor / el maestro, 1, unknown
+secretary, el secretario, 1, unknown
+to translate / to express, traducir, 1, unknown
+character / celebrity, el personaje, 1, unknown
+desk, el escritorio, 1, unknown
+writer / author, el escritor / el autor, 1, unknown
+actor, el actor / la actriz, 1, unknown
+designer, el diseñador, 1, unknown
+painter, el pintor, 1, unknown
+director / conductor (orchestra), el director, 1, unknown
+driver, el conductor / el chófer, 1, unknown
+orchestra, la orquesta, 1, unknown
+screenwriter, el/la guionista, 1, unknown
+cartoonist, el/la dibujante, 1, unknown
+dancer, el bailarín / el bailaor, 1, unknown
+to hear / to listen to, oír, 1, unknown
+to miss / to be missing, faltar, 1, unknown
+like this / this way, así, 1, unknown
+
+so (as a consequence), así que, 1, unknown
+there is / there are, hay, 1, unknown
+big, grande, 1, unknown
+small, pequeño, 1, unknown
+a lot / many / much, mucho, 1, unknown
+through, a través de, 1, unknown
+out / outside, fuera / afuera, 1, unknown
+in / inside, dentro, 1, unknown
+truck, el camión, 1, unknown
+sign / signal, la señal, 1, unknown
+to show / to point out, señalar, 1, unknown
+cold, frío, 1, unknown
+hot, caliente / cálido, 1, unknown
+to reason / to argue, razonar, 1, unknown
+to leave, irse, 1, unknown
+to remember, recordar, 1, unknown
+to agree, aceptar / acordar, 1, unknown
+to forget, olvidar / olvidarse, 1, unknown
+to feel, sentir / sentirse, 1, unknown
+to worry, preocuparse, 1, unknown
+to worry (someone) / to bother, preocupar, 1, unknown
+to marry, casarse, 1, unknown
+to raise / to lift, levantar, 1, unknown
+to get up, levantarse, 1, unknown
+
+to wake up, despertar / despertarse, 1, unknown
+to wonder, preguntarse, 1, unknown
+to call oneself, llamarse, 1, unknown
+to gather, recolectar / recoger / reunir, 1, unknown
+to take / to eat / to drink, tomar, 1, unknown
+to shoot, disparar, 1, unknown
+to go off, dispararse, 1, unknown
+to take / to grab, coger, 1, unknown
+to have / to have to, haber, 1, unknown
+to get, conseguir, 1, unknown
+breakfast, el desayuno, 1, unknown
+lunch, el almuerzo, 1, unknown
+dinner, la cena, 1, unknown
+to have breakfast, desayunar, 1, unknown
+to have lunch, almorzar, 1, unknown
+to have dinner, cenar, 1, unknown
+to meet, reunirse a, 1, unknown
+answer / response, la respuesta, 1, unknown
+series, la serie, 1, unknown
+to answer, responder, 1, unknown
+to enter, entrar, 1, unknown
+to go out / to leave, salir, 1, unknown
+to go, ir, 1, unknown
+to be, ser / estar, 1, unknown
+
+to live, vivir, 1, unknown
+to prefer, preferir, 1, unknown
+syllable, la sílaba, 1, unknown
+absence / lack, la falta, 1, unknown
+lexical, léxico, 1, unknown
+flag, la bandera, 1, unknown
+to correspond, corresponder, 1, unknown
+to assure / to guarantee, asegurar, 1, unknown
+safe / sure, seguro, 1, unknown
+ship, el barco / el buque, 1, unknown
+boat, el barco, 1, unknown
+beauty, la belleza / la hermosura, 1, unknown
+from / since, desde, 1, unknown
+should / to owe, deber, 1, unknown
+after, después de, 1, unknown
+of course, por supuesto, 1, unknown
+place, el lugar, 1, unknown
+little / few, poco, 1, unknown
+before, antes de, 1, unknown
+form / way / shape, la forma, 1, unknown
+road / path, el camino, 1, unknown
+family, la familia, 1, unknown
+fire, el fuego, 1, unknown
+
+force, la fuerza, 1, unknown
+fine / thin, fino, 1, unknown
+figure, la figura, 1, unknown
+to appear / to forgive, figurar, 1, unknown
+old, viejo, 1, unknown
+together, juntos, 1, unknown
+game, el juego / el partido (sport), 1, unknown
+box, la caja, 1, unknown
+garden, el jardín, 1, unknown
+can, la lata, 1, unknown
+light, luz, 1, unknown
+to turn on / to light, encender, 1, unknown
+line, la línea, 1, unknown
+long, largo, 1, unknown
+length, el largo, 1, unknown
+horse, el caballo, 1, unknown
+main, principal, 1, unknown
+smooth / plain, liso, 1, unknown
+ready, listo / preparado, 1, unknown
+need / necesity, la necesidad, 1, unknown
+new, nuevo, 1, unknown
+world, el mundo, 1, unknown
+name, el nombre, 1, unknown
+port, el puerto, 1, unknown
+
+part, la parte, 1, unknown
+air, el aire, 1, unknown
+to separate, separar, 1, unknown
+round, redondo, 1, unknown
+round, la ronda, 1, unknown
+left, la izquierda, 1, unknown
+right, el derecho, 1, unknown
+angry, enojado / enfadado / airado, 1, unknown
+anger, el enojo / el enfado / la ira, 1, unknown
+career / race, la carrera, 1, unknown
+race, la raza / la carrera, 1, unknown
+reference, la referencia, 1, unknown
+joint, conjunto, 1, unknown
+set / group / collection, el conjunto, 1, unknown
+even / including, incluso, 1, unknown
+land / soil / earth, la tierra, 1, unknown
+the earth, la Tierra, 1, unknown
+to land, aterrizar, 1, unknown
+shirt, la camisa, 1, unknown
+t-shirt, la camiseta, 1, unknown
+dress, el vestido, 1, unknown
+to wear / to dress, vestir, 1, unknown
+white, el blanco, 1, unknown
+black, el negro, 1, unknown
+
+red, el rojo, 1, unknown
+green, el verde, 1, unknown
+blue, el azul, 1, unknown
+yellow, el amarillo, 1, unknown
+brown, el marrón, 1, unknown
+gray, el gris, 1, unknown
+orange, el naranja, 1, unknown
+pink, el rosado, 1, unknown
+purple, el morado, 1, unknown
+easy, fácil, 1, unknown
+difficult, difícil, 1, unknown
+problem, el problema, 1, unknown
+exam, el examen, 1, unknown
+salad, la ensalada, 1, unknown
+tomato, el tomate, 1, unknown
+hat, el sombrero / el gorro / la garra, 1, unknown
+such, tal, 1, unknown
+act, el acto, 1, unknown
+to change, cambiar, 1, unknown
+to want / to love, querer, 1, unknown
+class, la clase, 1, unknown
+clothes, la ropa, 1, unknown
+elegant, elegante, 1, unknown
+jacket, la chaqueta, 1, unknown
+
+expensive, caro, 1, unknown
+cheap, barato, 1, unknown
+watch, el reloj, 1, unknown
+change, el cambio, 1, unknown
+strong, fuerte, 1, unknown
+weak, débil, 1, unknown
+wallet / purse, la cartera, 1, unknown
+gift, el regalo, 1, unknown
+favorite, favorito, 1, unknown
+coat, el abrigo, 1, unknown
+medicine, la medicina, 1, unknown
+belt, el cinturón, 1, unknown
+too / too much / too many, demasiado, 1, unknown
+comfortable, cómodo, 1, unknown
+skirt, la falda, 1, unknown
+different, diferente, 1, unknown
+distinct / different, distinto, 1, unknown
+important, importante, 1, unknown
+coffee, el café, 1, unknown
+cafeteria, la cafetería, 1, unknown
+mother, la madre, 1, unknown
+father, el padre, 1, unknown
+grandmother / grandfather, la abuela / el abuelo, 1, unknown
+
+brother / sister, el hermano / la hermana, 1, unknown
+husband / wife, el esposo / la esposa, 1, unknown
+son / daughter, el hijo / la hija, 1, unknown
+cousin, el primo / la prima, 1, unknown
+uncle / aunt, el tío / la tía, 1, unknown
+wolf, el lobo, 1, unknown
+werewolf, el hombre lobo, 1, unknown
+wow, caramba, 1, unknown
+to promise, prometer, 1, unknown
+promise, la promesa, 1, unknown
+enough / quite a lot of, bastante, 1, unknown
+to try, intentar, 1, unknown
+weapon, el arma, 1, unknown
+shield, el escudo, 1, unknown
+to protect, proteger, 1, unknown
+exactly / strictly / properly, propiamente, 1, unknown
+to belong to, pertenecer a, 1, unknown
+something, algo, 1, unknown
+someone, alguien, 1, unknown
+sometimes / once, alguna véz, 1, unknown
+so / such, tan, 1, unknown
+stubborn, terco / obstinado, 1, unknown
+pleasure, el placer, 1, unknown
+enjoy, disfrutar, 1, unknown
+
+anxiety, la ansiedad, 1, unknown
+distress / angst, la angustia, 1, unknown
+to distress, angustiar, 1, unknown
+to suffer, sufrir, 1, unknown
+to affirm / to assert, affirmar, 1, unknown
+population, la población, 1, unknown
+popular, popular, 1, unknown
+people, la gente, 1, unknown
+to sleep, dormir, 1, unknown
+dream / sleep, el sueño, 1, unknown
+to dream, soñar, 1, unknown
+to recommend, recomendar, 1, unknown
+to advise, aconsejar, 1, unknown
+advice, el consejo, 1, unknown
+tree, el árbol, 1, unknown
+wood, la madera, 1, unknown
+brain, el cerebro, 1, unknown
+early, temprano, 1, unknown
+late, tarde, 1, unknown
+spring, la primavera, 1, unknown
+summer, el verano, 1, unknown
+autumn, el otoño, 1, unknown
+winter, el invierno, 1, unknown
+to hurt, doler, 1, unknown
+
+head, la cabeza, 1, unknown
+to usually do, soler, 1, unknown
+to arrive / to come, llegar, 1, unknown
+nervous, nervioso, 1, unknown
+to rent, alquilar, 1, unknown
+rent, el alquiler, 1, unknown
+next to, junto a, 1, unknown
+to take out / to get out, sacar, 1, unknown
+none / any, ningún, 1, unknown
+to wash, lavar, 1, unknown
+to pass / to approve, aprobar, 1, unknown
+to send, enviar, 1, unknown
+letter / menu, la carta, 1, unknown
+glasses, las gafas, 1, unknown
+beard, la barba, 1, unknown
+novel, la novela, 1, unknown
+to ride, montar, 1, unknown
+lettuce, la lechuga, 1, unknown
+high school / institute, el instituto, 1, unknown
+desire, el deseo, 1, unknown
+wish / desire, la gana, 1, unknown
+to desire / to wish, desear, 1, unknown
+kind, amable, 1, unknown
+hospitable, hospitalario, 1, unknown
+
+north, el norte, 1, unknown
+south, el sur, 1, unknown
+east, el este, 1, unknown
+west, el oeste, 1, unknown
+located, situado, 1, unknown
+full, lleno, 1, unknown
+to cross, atravesar, 1, unknown
+to guide, guiar, 1, unknown
+guided, guidado, 1, unknown
+during, durante, 1, unknown
+bridge, el puente, 1, unknown
+neighborhood, el barrio, 1, unknown
+to treat, tratar, 1, unknown
+Above all, Sobre todo, 1, unknown
+singer, el/la cantante, 1, unknown
+to encourage, animar, 1, unknown
+lively, animado / dinámic, 1, unknown

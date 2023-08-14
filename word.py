@@ -15,5 +15,5 @@ class Word:
             self.type = Word.DEFAULT_TYPE
         self.index = index
 
-    TYPES = ["noun", "verb", "adjective", "pronoun", "preposition", "conjuction", "interjection", "expression"]
+    TYPES = ["noun", "verb", "adj", "pron", "prepos", "conj", "interj", "expr", "unknown"]
     DEFAULT_TYPE = "noun"
