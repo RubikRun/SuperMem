@@ -193,9 +193,16 @@ class HomePage:
         elif mode == 2:
             word_idxs = [tup[0] for tup in sorted(enumerate(words), key=lambda x:x[1].level, reverse = True)]
         elif mode == 3:
-            word_idxs = list(tup[1].index for tup in sorted(zip(self.user.confidences[lang_idx], words)))
+            # Workaround for the case of same confidences:
+            # In this case the second element of the tuple is compared when sorting,
+            # and the second element is of type Word so they cannot be compared.
+            # We just need something that can be compared and won't be the same there
+            # and the word will be at index 2
+            dummy_list = list(range(len(words)))
+            word_idxs = list(tup[2].index for tup in sorted(zip(self.user.confidences[lang_idx], dummy_list, words)))
         elif mode == 4:
-            word_idxs = list(tup[1].index for tup in sorted(zip(self.user.confidences[lang_idx], words), reverse = True))
+            dummy_list = list(range(len(words)))
+            word_idxs = list(tup[2].index for tup in sorted(zip(self.user.confidences[lang_idx], dummy_list, words), reverse = True))
         elif mode == 5:
             word_idxs = list(range(len(words)))
             shuffle(word_idxs)
